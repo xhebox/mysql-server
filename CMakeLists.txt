@@ -1536,8 +1536,6 @@ ELSE()
   SET(DEFAULT_TMPDIR "\"${TMPDIR}\"")
 ENDIF()
 
-INCLUDE(cmake/boost.cmake)
-
 IF (LINUX)
   OPTION(WITH_SYSTEMD "Enable installation of systemd support files" OFF)
   OPTION(WITH_SYSTEMD_DEBUG "Build in systemd debug trace" OFF)
@@ -2187,9 +2185,9 @@ ADD_SUBDIRECTORY(client)
 ADD_SUBDIRECTORY(utilities)
 ADD_SUBDIRECTORY(share)
 ADD_SUBDIRECTORY(libservices)
+ADD_SUBDIRECTORY(testclients)
 
 IF(NOT WITHOUT_SERVER)
-  ADD_SUBDIRECTORY(testclients)
   ADD_SUBDIRECTORY(sql)
 ENDIF()
 
