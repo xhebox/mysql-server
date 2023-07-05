@@ -565,8 +565,6 @@ ELSE()
   SET(DEFAULT_TMPDIR "\"${TMPDIR}\"")
 ENDIF()
 
-INCLUDE(cmake/boost.cmake)
-
 IF (CMAKE_SYSTEM_NAME MATCHES "Linux")
   OPTION(WITH_SYSTEMD "Enable installation of systemd support files" OFF)
   IF (WITH_SYSTEMD)
@@ -744,13 +742,13 @@ ADD_SUBDIRECTORY(extra)
 ADD_SUBDIRECTORY(client)
 ADD_SUBDIRECTORY(sql/share)
 ADD_SUBDIRECTORY(libservices)
+ADD_SUBDIRECTORY(testclients)
 
 IF(UNIX)
   ADD_SUBDIRECTORY(man)
 ENDIF()
 
 IF(NOT WITHOUT_SERVER)
-  ADD_SUBDIRECTORY(testclients)
   ADD_SUBDIRECTORY(sql)
   OPTION (WITH_EMBEDDED_SERVER "Compile MySQL with embedded server" OFF)
   IF(WITH_EMBEDDED_SERVER) 
