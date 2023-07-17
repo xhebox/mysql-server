@@ -288,9 +288,7 @@ static bool check_have_innodb(MYSQL *conn) {
   DIE_UNLESS(res);
 
   row = mysql_fetch_row(res);
-  DIE_UNLESS(row);
-
-  if (row[0] && row[1]) result = strcmp(row[1], "1") == 0;
+  if (row && row[0] && row[1]) result = strcmp(row[1], "1") == 0;
   mysql_free_result(res);
   return result;
 }
@@ -1262,7 +1260,7 @@ int main(int argc, char **argv) {
           }
         }
         if (!fptr->name) {
-          fprintf(stderr, "\n\nGiven test not found: '%s'\n", *argv);
+          fprintf(stderr, "\n\nGiven test not found: '%s'\n", *curr_test);
           fprintf(stderr, "See legal test names with %s -T\n\nAborting!\n",
                   my_progname);
           client_disconnect(mysql);
